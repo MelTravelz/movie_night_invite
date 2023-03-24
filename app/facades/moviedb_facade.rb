@@ -31,10 +31,16 @@ class MoviedbFacade
     end
   end
   
+  def get_cast
+    search_results = movie_service.fetch_api("/movie/#{@movie_id}/credits?&include_adult=false")
+    binding.pry
+  end
+  
   def get_movie_info
     info = movie_service.get_movie(@movie_id)
     poro = Movie.new(info)
   end
+  
 
 
   ############## REFACTORED: 
