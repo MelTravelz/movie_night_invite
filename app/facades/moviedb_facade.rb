@@ -19,15 +19,17 @@ class MoviedbFacade
 
   def get_movies_search
     search_results = movie_service.fetch_api("/search/movie?query=#{@word}&include_adult=false")
-    search_results[:results].map do |movie|
-      Movie.new(movie)
+    search_results[:results].map do |movie_hash|
+      movie_list = { movie: movie_hash }
+      Movie.new(movie_list)
     end
   end
 
   def get_top_movies
     search_results = movie_service.fetch_api("/movie/top_rated?include_adult=false")
-    search_results[:results].map do |movie|
-      Movie.new(movie)
+    search_results[:results].map do |movie_hash|
+      movie_list = { movie: movie_hash }
+      Movie.new(movie_list)
     end
   end
   
@@ -38,10 +40,17 @@ class MoviedbFacade
   
   def get_movie_info
     info = movie_service.get_movie(@movie_id)
-    poro = Movie.new(info)
   end
   
 
+  def get_specific_movie
+    movie_list = {
+      movie: get_movie_info
+      # cast: get_cast_info
+      # comments: get_comments_info
+    }
+    Movie.new(movie_list)
+  end
 
   ############## REFACTORED: 
   #private <- for later muahaha
@@ -58,15 +67,6 @@ class MoviedbFacade
   #   search_results[:results].map do |movie|
   #     Movie.new(movie)
   #   end
-  # end
-
-    # def self.call
-  #   movie_list = {
-  #     movies: get_movies
-  #     cast: get_cast
-  #     comments: get_comments
-  #   }
-  #   Movie.new(movie_list)
   # end
 
 

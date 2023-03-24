@@ -45,7 +45,19 @@ RSpec.describe MoviedbFacade do
       end
     end
     
-    context "#get_movie_info" do
+    # context "#get_movie_info" do
+    #   it "returns a movie object" do
+    #     response = File.read("spec/fixtures/get_movie.json")
+    #     stub_request(:get, "https://api.themoviedb.org/movie/122")
+    #       .to_return(status: 200, body: response, headers: {})
+          
+    #     film = MoviedbFacade.new(movie_id: 122)
+        
+    #     expect(film.get_movie_info).to be_a(Movie)
+    #   end
+    # end
+
+    context "#get_specific_movie" do
       it "returns a movie object" do
         response = File.read("spec/fixtures/moviedb/space_odyssey.json")
         stub_request(:get, "https://api.themoviedb.org/movie/62")
@@ -53,7 +65,7 @@ RSpec.describe MoviedbFacade do
           
         film = MoviedbFacade.new(movie_id: 62)
         
-        expect(film.get_movie_info).to be_a(Movie)
+        expect(film.get_specific_movie).to be_a(Movie)
       end
     end
   end
