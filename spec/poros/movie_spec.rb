@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe Movie do
   let(:attributes) do
     {
-      "id" => 55,
-      "title" => "Interstellar",
-      "vote_average" => 9.0,
-      "runtime" => 180,
-      "overview" => "Man goes to space, chaos ensues",
-      "genres" => [{id: 1, name: "Drama"}, {id: 2, name: "Science Fiction"}],
+      :id => 55,
+      :title => "Interstellar",
+      :vote_average => 9.0,
+      :runtime => 180,
+      :overview => "Man goes to space, chaos ensues",
+      :genres => [{id: 1, name: "Drama"}, {id: 2, name: "Science Fiction"}],
     }
   end
   let(:movie) { Movie.new(attributes) }

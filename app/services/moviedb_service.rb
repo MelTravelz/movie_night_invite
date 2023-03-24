@@ -1,7 +1,7 @@
 class MoviedbService
   def fetch_api(url)
     response = connection.get(url)
-    JSON.parse(response.body, symoblize_names: true)
+    JSON.parse(response.body, symbolize_names: true)
   end
   
   

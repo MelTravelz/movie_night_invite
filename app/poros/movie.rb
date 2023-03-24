@@ -7,13 +7,13 @@ class Movie
               :genres
   
   def initialize(response)
-    @movie_id = response["id"]
-    @title = response["title"]
-    @vote_avg = response["vote_average"]
+    @movie_id = response[:id]
+    @title = response[:title]
+    @vote_avg = response[:vote_average]
     
-    @runtime = response["runtime"]
-    @summary = response["overview"]
-    @genres = response["genres"]
+    @runtime = response[:runtime]
+    @summary = response[:overview]
+    @genres = response[:genres]
   end
   
   # def list_genres
